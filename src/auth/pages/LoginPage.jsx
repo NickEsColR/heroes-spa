@@ -12,6 +12,7 @@ export const LoginPage = () => {
     });
 
     const onLogin = () => {
+        if(name.trim().length === 0) return;
         const lastPath = localStorage.getItem("lastPath") || "/";
 
         login(name);
@@ -34,6 +35,9 @@ export const LoginPage = () => {
                 autoComplete="off"
                 autoFocus
             />
+            {name.trim().length === 0 && (
+                <p><small className="text-danger">Name is required</small></p>
+            )}
 
             <button className="btn btn-primary mt-3" onClick={onLogin}>
                 Login
