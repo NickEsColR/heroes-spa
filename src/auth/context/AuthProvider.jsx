@@ -4,7 +4,11 @@ import { AuthContext } from "./AuthContext";
 import { types } from "../types";
 
 const init = () => {
-    return JSON.parse(localStorage.getItem("user")) || { logged: false };
+    const user = JSON.parse(localStorage.getItem("user"))
+    return {
+        logged: !!user,
+        user
+    }
 };
 
 export const AuthProvider = ({ children }) => {
