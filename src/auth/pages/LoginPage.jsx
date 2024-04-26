@@ -1,16 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context";
 import { useContext } from "react";
+import { useForm } from "../../hooks";
 
 export const LoginPage = () => {
-
-    const {login} = useContext(AuthContext)
+    const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const { name, onInputChange } = useForm({
+        name: "",
+    });
 
     const onLogin = () => {
         const lastPath = localStorage.getItem("lastPath") || "/";
 
-        login("Luis");
+        login(name);
 
         navigate(lastPath, { replace: true });
     };
@@ -20,7 +24,20 @@ export const LoginPage = () => {
             <h1>LoginPage</h1>
             <hr />
 
-            <button className="btn btn-primary" onClick={onLogin}>Login</button>
+            <input
+                type="text"
+                name="name"
+                className="form-control"
+                placeholder="Name"
+                value={name}
+                onChange={onInputChange}
+                autoComplete="off"
+                autoFocus
+            />
+
+            <button className="btn btn-primary mt-3" onClick={onLogin}>
+                Login
+            </button>
         </div>
     );
 };
