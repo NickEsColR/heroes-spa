@@ -22,7 +22,7 @@ export const LoginPage = () => {
 
     return (
         <div className="container mt-5">
-            <h1>LoginPage</h1>
+            <h1>Login Page</h1>
             <hr />
 
             <input
