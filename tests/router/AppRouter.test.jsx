@@ -15,7 +15,6 @@ describe("Pruebas en AppRouter", () => {
                 </AuthContext.Provider>
             </MemoryRouter>
         );
-        screen.debug();
         expect(screen.getAllByText("Login").length).toBe(1);
     });
 
